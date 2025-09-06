@@ -72,19 +72,24 @@ export class TourModel extends Model {
     return expect(this.content).not.toBeVisible()
   }
 
+  async seeIdleContent() {
+    await expect(this.content).toHaveAttribute("data-idle")
+    await expect(this.content).toBeVisible()
+  }
+
   async seeSpotlight() {
     return expect(this.spotlight).toBeInViewport()
   }
 
   async seeTarget(text: string) {
     const target = this.page.getByRole("heading", { name: text })
-    // await expect(target).toBeInViewport()
+    await expect(target).toBeInViewport()
     await expect(target).toBeVisible()
   }
 
   async seeIframeTarget(text: string) {
     const target = this.page.frameLocator("iframe").getByRole("heading", { name: text })
-    // await expect(target).toBeInViewport()
+    await expect(target).toBeInViewport()
     await expect(target).toBeVisible()
   }
 
