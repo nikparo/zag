@@ -19,6 +19,10 @@ export class TourModel extends Model {
     return this.page.locator("[data-scope=tour][data-part=content]")
   }
 
+  private getStep(stepId: string) {
+    return this.page.locator(`[data-scope=tour][data-part=content][data-step=${stepId}][data-idle]`)
+  }
+
   private get title() {
     return this.content.locator("[data-part=title]")
   }
@@ -72,9 +76,9 @@ export class TourModel extends Model {
     return expect(this.content).not.toBeVisible()
   }
 
-  async seeIdleContent() {
-    await expect(this.content).toHaveAttribute("data-idle")
-    await expect(this.content).toBeVisible()
+  async seeIdleStep(stepId: string) {
+    await expect(this.getStep(stepId)).toHaveAttribute("data-idle")
+    await expect(this.getStep(stepId)).toBeVisible()
   }
 
   async seeSpotlight() {
