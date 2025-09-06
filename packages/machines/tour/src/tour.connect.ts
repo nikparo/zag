@@ -11,6 +11,7 @@ import { findStepIndex, isTooltipPlacement, isTooltipStep } from "./utils/step"
 export function connect<T extends PropTypes>(service: TourService, normalize: NormalizeProps<T>): TourApi<T> {
   const { state, context, computed, send, prop, scope } = service
   const open = state.hasTag("open")
+  const idle = state.hasTag("idle")
 
   const steps = Array.from(context.get("steps"))
   const stepIndex = computed("stepIndex")
@@ -189,6 +190,7 @@ export function connect<T extends PropTypes>(service: TourService, normalize: No
         "aria-live": "polite",
         "aria-atomic": "true",
         hidden: !open,
+        "data-idle": dataAttr(idle),
         "data-state": open ? "open" : "closed",
         "data-type": step?.type,
         "data-placement": placement,

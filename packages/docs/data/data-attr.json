@@ -1796,6 +1796,7 @@
       "data-scope": "tour",
       "data-part": "content",
       "data-state": "\"open\" | \"closed\"",
+      "data-idle": "Waiting for interaction",
       "data-nested": "popover",
       "data-has-nested": "popover",
       "data-type": "The type of the item",

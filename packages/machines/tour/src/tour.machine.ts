@@ -154,7 +154,7 @@ export const machine = createMachine<TourSchema>({
 
   states: {
     "tour.inactive": {
-      tags: ["closed"],
+      tags: ["closed", "idle"],
       on: {
         START: {
           actions: ["setInitialStep", "invokeOnStart"],
@@ -201,7 +201,7 @@ export const machine = createMachine<TourSchema>({
     },
 
     "tour.active": {
-      tags: ["open"],
+      tags: ["open", "idle"],
       effects: ["trapFocus", "trackPlacement", "trackDismissableBranch", "trackInteractOutside", "trackEscapeKeydown"],
     },
   },
