@@ -17,14 +17,14 @@ export function getWebServer(): WebServer {
       reuseExistingServer: !CI,
     },
     vue: {
-      cwd: "./examples/vue-ts",
-      command: "pnpm vite --port 3001",
+      cwd: "./examples/nuxt-ts",
+      command: "pnpm vue dev --port 3001",
       url: "http://localhost:3001",
       reuseExistingServer: !CI,
     },
     solid: {
       cwd: "./examples/solid-ts",
-      command: "pnpm vite --port 3002",
+      command: "pnpm solid dev --port 3002",
       url: "http://localhost:3002",
       reuseExistingServer: !CI,
     },
