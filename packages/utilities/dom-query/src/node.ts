@@ -106,3 +106,18 @@ export function getParentNode(node: Node): Node {
     (node as any).assignedSlot || node.parentNode || (isShadowRoot(node) && node.host) || getDocumentElement(node)
   return isShadowRoot(result) ? result.host : result
 }
+
+if (typeof window !== "undefined") {
+  // @ts-expect-error
+  window.getActiveElement = () => getActiveElement(document)
+
+  // @ts-expect-error
+  window.logActiveElement = () => {
+    let intervalId = setInterval(() => {
+      console.log(getActiveElement(document))
+    }, 1000)
+    setTimeout(() => {
+      clearInterval(intervalId)
+    }, 10000)
+  }
+}
