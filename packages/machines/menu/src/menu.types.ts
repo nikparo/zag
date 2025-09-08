@@ -167,8 +167,8 @@ export type MenuMachine = Machine<MenuSchema>
  * -----------------------------------------------------------------------------*/
 
 export interface Api {
-  getItemProps: (props: ItemProps) => Record<string, any>
-  getTriggerProps: () => Record<string, any>
+  getItemProps: (props: ItemProps, normalized?: boolean) => Record<string, any>
+  getTriggerProps: (normalized?: boolean) => Record<string, any>
 }
 
 export interface ItemProps {
@@ -308,14 +308,14 @@ export interface MenuApi<T extends PropTypes = PropTypes> {
 
   getContextTriggerProps: () => T["element"]
   getTriggerItemProps: <A extends Api>(childApi: A) => T["element"]
-  getTriggerProps: () => T["button"]
+  getTriggerProps: (normalized?: boolean) => T["button"]
   getIndicatorProps: () => T["element"]
   getPositionerProps: () => T["element"]
   getArrowProps: () => T["element"]
   getArrowTipProps: () => T["element"]
   getContentProps: () => T["element"]
   getSeparatorProps: () => T["element"]
-  getItemProps: (options: ItemProps) => T["element"]
+  getItemProps: (options: ItemProps, normalized?: boolean) => T["element"]
   getOptionItemProps: (option: OptionItemProps) => T["element"]
   getItemIndicatorProps: (option: ItemBaseProps) => T["element"]
   getItemTextProps: (option: ItemBaseProps) => T["element"]
