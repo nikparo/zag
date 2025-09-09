@@ -5,7 +5,7 @@ let I: MenuModel
 
 test.describe("menu option", () => {
   test.beforeEach(async ({ page }) => {
-    I = new MenuModel(page)
+    I = new MenuModel(page, "menu-options-page")
     await I.goto("/menu-options")
   })
 
@@ -70,6 +70,7 @@ test.describe("menu option", () => {
     // open the menu
     await I.focusTrigger()
     await I.pressKey("Enter")
+    await I.seeDropdownIsFocused()
 
     // // navigate the 'Phone' item
     await I.pressKey("ArrowDown", 4)
